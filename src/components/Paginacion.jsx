@@ -1,10 +1,7 @@
-
-import React, { useState } from 'react';
-
+import PropTypes from 'prop-types';
 
 const Paginacion = ({ valorActual, pagina, accion }) => {
   
-
   const cambiarPagina = () => {
     if (accion === 'avanzar') {
       pagina(valorActual + 1);
@@ -21,6 +18,11 @@ const Paginacion = ({ valorActual, pagina, accion }) => {
       <button onClick={cambiarPagina}>{accion}</button>
     </div>
   );
+}
+Paginacion.prototype = {
+  valorActual: PropTypes.number,
+  pagina: PropTypes.func,
+  accion: PropTypes.string
 }
 
 export default Paginacion

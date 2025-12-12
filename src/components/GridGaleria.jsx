@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
 import Cards from './Cards'
 import Paginacion from './Paginacion'
 import connect from '../Hooks/fech'
@@ -11,13 +12,14 @@ const GridGaleria = ({ categoria }) => {
     const perPage = 9
     const size = 'small'
 
+    //para cuando cateoria y paginacion cambian o cargan por primera vez
     useEffect(() => {
         const fetchDatos = async () => {
             try {
                 const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&size=${size}&locale=es-ES`
                 const resp = await connect(query)
                 const photos = resp.photos
-                console.log('photos:', photos)
+                console.log('fotos:', photos)
                 const fotos = photos.map((foto) => ({
                     img: foto.src.small,
                     url: foto.url,
@@ -29,8 +31,12 @@ const GridGaleria = ({ categoria }) => {
                 setDatos([])//actualizamos los datos si no hay
             }
         }
-        if (categoria) fetchDatos()
-    }, [categoria, pagina])
+        //Ejecuta el llmado al api si el valor de categoria no es indefinido o nulo
+        if (categoria){
+            fetchDatos()
+        } 
+    }, [categoria, pagina])//las dependencias cuando se va a disparar el useEffect
+
     const handlePaginacion = (nuevoValor) => {
         setPagina(nuevoValor)
     }
@@ -53,6 +59,8 @@ const GridGaleria = ({ categoria }) => {
     )
 }
 
-
+GridGaleria.propTypes = {
+  categoria: PropTypes.string
+};
 
 export default GridGaleria

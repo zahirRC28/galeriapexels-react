@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import Formulario from './Formulario';
 import { useState } from 'react';
 import GridGaleria from './GridGaleria';
@@ -8,11 +7,13 @@ const Galeria = () => {
 
     const handleCategoria = (nuevaCategoria)=>{
         setCategorias([...categorias, nuevaCategoria])
+        console.log(categorias);
     }
     
   return (
     <>
         <Formulario buscador = {handleCategoria} />
+
         {categorias.map((categoria) => (
             <section key={categoria}>
                 <GridGaleria categoria={categoria} />
@@ -20,10 +21,6 @@ const Galeria = () => {
         ))}
     </> 
   )
-}
-
-Galeria.propTypes = {
-    categoria: PropTypes.array
 }
 
 export default Galeria

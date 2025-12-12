@@ -1,5 +1,4 @@
-import React from 'react'
-
+import PropTypes from 'prop-types';
 const Cards = ({ img, url, desc }) => {
   return (
      <figure>
@@ -10,5 +9,11 @@ const Cards = ({ img, url, desc }) => {
     </figure>
   )
 }
+
+Cards.propTypes = {
+  img: PropTypes.string,
+  url: PropTypes.string,
+  desc: PropTypes.string
+};
 
 export default Cards
