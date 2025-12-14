@@ -62,10 +62,7 @@ export const GridGaleria = ({ categoria }) => {
                 <Errores message="Sin resultados" details="No se encontraron fotos para esta categoría." />
             )}
             </div >
-            { datos.length > 0 && (
-            <>
-                
-            </>
+            { datos.length > 0 && (    
             <div className='paginacion'>
                 <Paginacion valorActual={pagina} pagina={handlePaginacion} totalPaginas={totalFotos} accion='primero'/>
                 <Paginacion valorActual={pagina} pagina={handlePaginacion} totalPaginas={totalFotos} accion='retroceder'/>
@@ -75,6 +72,7 @@ export const GridGaleria = ({ categoria }) => {
             </div>
             )}
         </section>
+        </>
     )
 }
 
