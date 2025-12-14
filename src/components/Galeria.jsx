@@ -1,6 +1,7 @@
 import Formulario from './Formulario';
 import { useState } from 'react';
 import GridGaleria from './GridGaleria';
+import './Galeria.css'
 
 const Galeria = () => {
     const [categorias, setCategorias] = useState ([])
@@ -12,7 +13,7 @@ const Galeria = () => {
     
   return (
     <>
-        <Formulario buscador = {handleCategoria} />
+        <Formulario className='formulario' buscador = {handleCategoria} />
 
         {categorias.map((categoria) => (
             <section key={categoria}>

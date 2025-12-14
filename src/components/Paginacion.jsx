@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Paginacion.css'
 
 const Paginacion = ({ valorActual, pagina, accion }) => {
   
@@ -14,7 +15,7 @@ const Paginacion = ({ valorActual, pagina, accion }) => {
   }
 
   return (
-    <div>
+    <div className='paginacion'>
       <button onClick={cambiarPagina}>{accion}</button>
     </div>
   );

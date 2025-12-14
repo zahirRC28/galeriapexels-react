@@ -1,7 +1,9 @@
+import './Header.css'
+
 const Header = () => {
   return (
-    <div>
-      <p>This is the Header</p>
+    <div className="header">
+      <p>Tu catálogo de fotos</p>
     </div>
   )
 }

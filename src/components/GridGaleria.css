@@ -1,0 +1,31 @@
+
+.flexContainer {
+   display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    text-align: center;
+    flex-direction: row;
+} 
+
+.categoria {
+   
+    font-size: 3rem;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    margin: 20px auto;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold';
+}
+
+.paginacion{
+    font-size: 2rem;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    margin: 20px auto;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: center;
+}

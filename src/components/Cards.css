@@ -1,0 +1,60 @@
+/* figure {
+    background-color: blueviolet;
+} */
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    border-radius: 8px; /* opcional, para bordes redondeados */
+}
+
+figure {
+    width: 90%;
+    margin: 2%
+}
+
+
+
+
+/* ===============================
+            768px
+=================================== */
+@media screen and (min-width: 768px) {
+
+
+    figure {
+        /* background-color: blue; */
+        width: 45%;
+        margin: 2%
+    }
+}
+    
+
+/* ===============================
+            992px
+=================================== */
+
+@media screen and (min-width:992px) {
+   
+    figure {
+        /* background-color: beige; */
+       width: 29%;
+       margin: 2%
+    }
+}
+
+/* ===============================
+            1200px
+=================================== */
+
+@media screen and (min-width:1200px) {
+    
+    figure {
+        /* background-color: rgb(201, 92, 179); */
+        width: 20%;
+        margin: 2%
+
+    }
+}

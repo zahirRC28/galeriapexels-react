@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import Cards from './Cards'
 import Paginacion from './Paginacion'
 import connect from '../Hooks/fech'
+import './GridGaleria.css'
 
 const GridGaleria = ({ categoria }) => {
     const [datos, setDatos] = useState([]) //para poder actualizar los datos
     const [pagina, setPagina] = useState(1)
     const urlBase = "https://api.pexels.com/v1"
     
-    const perPage = 9
+    const perPage = 12
     const size = 'small'
 
     //para cuando cateoria y paginacion cambian o cargan por primera vez
@@ -42,20 +43,22 @@ const GridGaleria = ({ categoria }) => {
     }
 
     return (
-        <>
-            <p>{categoria}</p>
-            {datos.length > 0 && datos.map((foto, idx) => (
-                <Cards key={idx} img={foto.img} url={foto.url} desc={foto.descripcion} />
-            ))
-            }
+        <section >
+            <p className='categoria'>{categoria}</p>
+            <div className='flexContainer'>
+                {datos.length > 0 && datos.map((foto, idx) => (
+                    <Cards key={idx} img={foto.img} url={foto.url} desc={foto.descripcion} />
+                ))
+                }
+            </div >
             { datos.length > 0 && (
-            <>
+            <div className='paginacion'>
                 <Paginacion valorActual={pagina} pagina={handlePaginacion} accion='retroceder'/>
-                <p>{pagina}</p>
+                <p className='numPag'>{pagina}</p>
                 <Paginacion valorActual={pagina} pagina={handlePaginacion} accion='avanzar'/>
-            </>
+            </div>
             )}
-        </>
+        </section>
     )
 }
 
