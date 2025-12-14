@@ -2,6 +2,7 @@ import { Formulario } from './Formulario';
 import { useState } from 'react';
 import { GridGaleria } from './GridGaleria';
 import { Errores } from './Errores';
+import './Galeria.css';
 
 export const Galeria = () => {
     const [categorias, setCategorias] = useState([])
@@ -23,7 +24,7 @@ export const Galeria = () => {
     
   return (
     <>
-        <Formulario buscador = {handleCategoria} />
+        <Formulario className='formulario' buscador = {handleCategoria} />
 
         {error && (
             <Errores message={error.message} details={error.details} />

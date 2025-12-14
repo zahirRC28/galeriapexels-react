@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './Formulario.css'
 import handleSubmit from '../Hooks/form';
 
 export const Formulario = ({ buscador }) => {
@@ -20,12 +21,11 @@ export const Formulario = ({ buscador }) => {
     }*/
 
   return (
-      <>
-        <form onSubmit={handleSubmit(buscador)}>
+        <form className='formulario' onSubmit={handleSubmit(buscador)}>
           <input type='text' id='categoria' name='categoria' placeholder='Qué quiere buscar?'/> 
           <input type = 'submit' />
         </form>
-      </>
+      
   )
 }
 Formulario.propTypes = {

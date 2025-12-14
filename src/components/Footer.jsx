@@ -1,8 +1,9 @@
+import './Footer.css'
 
 export const Footer = () => {
   return (
-    <div>
-      <p>This is the footer</p>
+    <div className='footer'>
+      <p>Creado por Zahir y Esther</p>
     </div>
   )
 }
