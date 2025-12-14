@@ -1,16 +1,42 @@
-# React + Vite
+# Galería Pexels (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto de galería que consume la API de Pexels con React + Vite. Incluye búsqueda por categoría, paginación, manejo de errores y estilos básicos.
 
-Currently, two official plugins are available:
+**Inicio rápido (clonar, instalar, .env) con Yarn:**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+# Clonar el repositorio
+git clone https://github.com/zahirRC28/galeriapexels-react.git
+cd galeria-pexels
 
-## React Compiler
+# Instalar dependencias con Yarn
+yarn install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Configurar variables de entorno
+# Crea un archivo .env en la raíz con:
+echo VITE_API_KEY=tu_token_de_pexels > .env
+```
 
-## Expanding the ESLint configuration
+La clave `VITE_API_KEY` se usa en el archivo `src/Hooks/fech.js` para autorizar las solicitudes a la API de Pexels.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Scripts útiles (Yarn)
+
+```bash
+yarn dev
+yarn build
+yarn preview
+yarn lint
+```
+
+## Características
+
+- **Búsqueda por categoría:** formulario que agrega categorías y muestra sus resultados.
+- **Paginación:** navegación entre páginas (primero, retroceder, avanzar, última) con límites correctos.
+- **Manejo de errores:** mensajes claros para entrada vacía y ausencia de resultados; se limpian al buscar o paginar.
+- **Estilos pedidos:** componentes con CSS básico.
+
+## Estructura del proyecto
+
+- `src/components`: componentes como `Formulario`, `Galeria`, `GridGaleria`, `Paginacion`, `Cards`, `Errores`.
+- `src/Hooks/fech.js`: llamada a la API de Pexels usando `VITE_API_KEY`.
+
