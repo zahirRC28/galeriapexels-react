@@ -11,7 +11,7 @@ export const Galeria = () => {
         setError(null)
         if (!nuevaCategoria) {
             setError({ mensaje: 'La búsqueda está vacía', detalles: 'Escribe una categoría antes de buscar.' })
-            return
+            return //para no ejecutar el resto del codigo
         }
         const existe = categorias.includes(nuevaCategoria)
         if (existe === false){

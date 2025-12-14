@@ -72,6 +72,7 @@ export const GridGaleria = ({ categoria, clearError }) => {
                 <Errores mensaje="Sin resultados" detalles="No se encontraron fotos para esta categoría." />
             )}
             </div >
+            {/* el && es un condicional de react para que cuandos e cumpla uno ejecute lo otro */}
             { datos.length > 0 && (    
             <div className='paginacion'>
                 <Paginacion valorActual={pagina} pagina={handlePaginacion} totalPaginas={totalFotos} accion='primero'/>
