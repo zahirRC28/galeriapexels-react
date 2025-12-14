@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-const Cards = ({ img, url, desc }) => {
+
+export const Cards = ({ img, url, desc }) => {
   return (
      <figure>
         <img src={ img } alt= { url }/>
@@ -16,4 +17,3 @@ Cards.propTypes = {
   desc: PropTypes.string
 };
 
-export default Cards

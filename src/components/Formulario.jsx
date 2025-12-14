@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
-const Formulario = ({ buscador }) => {
+import handleSubmit from '../Hooks/form';
+
+export const Formulario = ({ buscador }) => {
     
-    const handleSubmit = (ev) => {
+    /*const handleSubmit = (ev) => {
         ev.preventDefault();//prevenimos envio del formulario
         const datos = new FormData(ev.currentTarget);// crear un Nuevo From data con los datos cuando hay un evento
         //console.log('datos Formulario',datos)
@@ -15,19 +17,18 @@ const Formulario = ({ buscador }) => {
 
         buscador(nuevaCategoria)
         ev.currentTarget.reset();//luego reseteamos al formulario
-    }
+    }*/
 
   return (
       <>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit(buscador)}>
           <input type='text' id='categoria' name='categoria' placeholder='Qué quiere buscar?'/> 
           <input type = 'submit' />
         </form>
       </>
   )
 }
-Formulario.prototype = {
+Formulario.propTypes = {
   buscador: PropTypes.func
 }
 
-export default Formulario

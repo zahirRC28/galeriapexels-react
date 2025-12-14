@@ -1,21 +1,36 @@
-import Formulario from './Formulario';
+import { Formulario } from './Formulario';
 import { useState } from 'react';
-import GridGaleria from './GridGaleria';
+import { GridGaleria } from './GridGaleria';
+import { Errores } from './Errores';
 
-const Galeria = () => {
-    const [categorias, setCategorias] = useState ([])
+export const Galeria = () => {
+    const [categorias, setCategorias] = useState([])
+    const [error, setError] = useState(null)
 
     const handleCategoria = (nuevaCategoria)=>{
-        setCategorias([...categorias, nuevaCategoria])
-        console.log(categorias);
+        if (!nuevaCategoria) {
+            setError({ message: 'La búsqueda está vacía', details: 'Escribe una categoría antes de buscar.' })
+            return
+        }
+        const existe = categorias.includes(nuevaCategoria)
+        if (existe === false){
+            setCategorias([...categorias, nuevaCategoria])
+            setError(null)
+            //console.log(categorias);
+        }
+        
     }
     
   return (
     <>
         <Formulario buscador = {handleCategoria} />
 
-        {categorias.map((categoria) => (
-            <section key={categoria}>
+        {error && (
+            <Errores message={error.message} details={error.details} />
+        )}
+
+        {categorias.map((categoria, index) => (
+            <section key={index}>
                 <GridGaleria categoria={categoria} />
             </section>
         ))}
@@ -23,4 +38,3 @@ const Galeria = () => {
   )
 }
 
-export default Galeria
