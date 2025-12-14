@@ -1,20 +1,19 @@
 import PropTypes from 'prop-types';
+import './Errores.css'
 
-export const Errores = ({ message = 'Ha ocurrido un error', details }) => {
+export const Errores = ({ mensaje = 'Ha ocurrido un error', detalles }) => {
   return (
-    <div>
-      <div>
-        {/* Título y mensaje principal del error */}
-        <h2>Error:</h2> {message}
-        {/* Si hay detalles, se renderiza un bloque adicional con información extra */}
-        {details && (
-          <p>{details}</p>
+    <div className="error-container">
+        <h2 className="error-titulo">Error:</h2>
+        <p className="error-mensaje">{mensaje}</p>
+        {detalles && (
+          <p className="error-detalles">{detalles}</p>
         )}
-      </div>
     </div>
   )
 }
-Errores.PropTypes = {
-
+Errores.propTypes = {
+  message: PropTypes.string,
+  details: PropTypes.string
 }
 

@@ -2,15 +2,15 @@ import { Formulario } from './Formulario';
 import { useState } from 'react';
 import { GridGaleria } from './GridGaleria';
 import { Errores } from './Errores';
-import './Galeria.css';
 
 export const Galeria = () => {
     const [categorias, setCategorias] = useState([])
     const [error, setError] = useState(null)
 
     const handleCategoria = (nuevaCategoria)=>{
+        setError(null)
         if (!nuevaCategoria) {
-            setError({ message: 'La búsqueda está vacía', details: 'Escribe una categoría antes de buscar.' })
+            setError({ mensaje: 'La búsqueda está vacía', detalles: 'Escribe una categoría antes de buscar.' })
             return
         }
         const existe = categorias.includes(nuevaCategoria)
@@ -19,7 +19,9 @@ export const Galeria = () => {
             setError(null)
             //console.log(categorias);
         }
-        
+    }
+    const borrarError = () =>{
+        setError(null)
     }
     
   return (
@@ -27,12 +29,12 @@ export const Galeria = () => {
         <Formulario className='formulario' buscador = {handleCategoria} />
 
         {error && (
-            <Errores message={error.message} details={error.details} />
+            <Errores mensaje={error.mensaje} detalles={error.detalles} />
         )}
 
         {categorias.map((categoria, index) => (
             <section key={index}>
-                <GridGaleria categoria={categoria} />
+                <GridGaleria categoria={categoria} clearError = {borrarError} />
             </section>
         ))}
     </> 

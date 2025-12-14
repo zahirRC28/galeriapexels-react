@@ -6,7 +6,7 @@ import connect from '../Hooks/fech'
 import { Errores } from './Errores'
 import './GridGaleria.css'
 
-export const GridGaleria = ({ categoria }) => {
+export const GridGaleria = ({ categoria, clearError }) => {
     const [datos, setDatos] = useState([]) //para poder actualizar los datos
     const [totalFotos, setTotalFotos] = useState(0)
     const [pagina, setPagina] = useState(1)
@@ -33,6 +33,10 @@ export const GridGaleria = ({ categoria }) => {
                 }))
                 setDatos(fotos)
                 setTotalFotos(total)
+                //se ejucta siempre, cuando el padre pase la funcion.
+                if (clearError){
+                    clearError()
+                } 
             } catch (error) {
                 console.error('error conectando:', error)
                 setDatos([])//actualizamos los datos si no hay
@@ -47,19 +51,25 @@ export const GridGaleria = ({ categoria }) => {
 
     const handlePaginacion = (nuevoValor) => {
         setPagina(nuevoValor)
+        //se ejucta siempre, cuando el padre pase la funcion.
+        if (clearError){
+            clearError()
+        } 
     }
 
     return (
         <>  
         <section >
-            <p className='categoria'>{categoria}</p>
+            {datos.length > 0 &&  (
+                <p className='categoria'>{categoria}</p>
+            )}
             <div className='flexContainer'>
                 {datos.length > 0 && datos.map((foto, idx) => (
                     <Cards key={idx} img={foto.img} url={foto.url} desc={foto.descripcion} />
                 ))
                 }
                 {datos.length === 0 && (
-                <Errores message="Sin resultados" details="No se encontraron fotos para esta categoría." />
+                <Errores mensaje="Sin resultados" detalles="No se encontraron fotos para esta categoría." />
             )}
             </div >
             { datos.length > 0 && (    
@@ -77,6 +87,7 @@ export const GridGaleria = ({ categoria }) => {
 }
 
 GridGaleria.propTypes = {
-  categoria: PropTypes.string
+    categoria: PropTypes.string,
+    clearError: PropTypes.func
 };
 

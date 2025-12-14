@@ -5,12 +5,14 @@ export const Paginacion = ({ valorActual, pagina, accion, totalPaginas }) => {
 
   const cambiarPagina = () => {
     console.log(totalPaginas);
-    const calculo = Math.round(parseInt(totalPaginas)/9);
+    const calculo = Math.round(parseInt(totalPaginas)/12);
     console.log(calculo);
     if (accion === 'avanzar') {
       if (valorActual <= calculo) {
         pagina(valorActual + 1);
         console.log(valorActual);
+      }else{
+        pagina(valorActual);
       }
     } else if (accion === 'retroceder') {
       if(valorActual > 1  ) {
