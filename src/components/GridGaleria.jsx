@@ -13,13 +13,14 @@ export const GridGaleria = ({ categoria, clearError }) => {
     const urlBase = "https://api.pexels.com/v1"
     
     const perPage = 12
-    const size = 'small'
+    // const size = 'large2x'
 
     //para cuando cateoria y paginacion cambian o cargan por primera vez
     useEffect(() => {
         const fetchDatos = async () => {
             try {
-                const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&size=${size}&locale=es-ES`
+                // const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&size=${size}&locale=es-ES`
+                const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&locale=es-ES`
                 const resp = await connect(query)
                 //onsole.log(resp)
                 const photos = resp.photos
@@ -27,7 +28,7 @@ export const GridGaleria = ({ categoria, clearError }) => {
                 //console.log(totalFotos);
                 //console.log('fotos:', photos)
                 const fotos = photos.map((foto) => ({
-                    img: foto.src.small,
+                    img: foto.src.large,
                     url: foto.url,
                     descripcion: foto.alt
                 }))
@@ -69,7 +70,7 @@ export const GridGaleria = ({ categoria, clearError }) => {
                 ))
                 }
                 {datos.length === 0 && (
-                <Errores mensaje="Sin resultados" detalles="No se encontraron fotos para esta categoría." />
+                <Errores mensaje="Sin resultados" detalles={`No se encontraron fotos para la categoría ${categoria}.`} />
             )}
             </div >
             {/* el && es un condicional de react para que cuandos e cumpla uno ejecute lo otro */}

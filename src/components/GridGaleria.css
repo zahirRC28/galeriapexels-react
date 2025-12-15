@@ -21,10 +21,11 @@
 .paginacion{
     font-size: 2rem;
     padding: 10px;
-    margin: 10px;
+    margin: 5px;
     text-align: center;
-    margin: 20px auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
