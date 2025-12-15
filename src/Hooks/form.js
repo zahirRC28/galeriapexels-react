@@ -6,7 +6,9 @@ const handleSubmit = (buscador) => (ev) => {
     //console.log('categoria',dato);
     const categoria = dato.categoria
     //console.log(categoria);
-    const nuevaCategoria = (categoria).trim();//le quito los espacios
+    const sinEspacios = (categoria).trim();//le quito los espacios
+
+    const nuevaCategoria = sinEspacios.toLowerCase();//lo pongo en minusculas
 
     //const nuevaCategoria = ev.target.categoria.value //Otra forma de coger el dato del formulario
 
