@@ -9,6 +9,7 @@ export const Galeria = () => {
 
     const handleCategoria = (nuevaCategoria)=>{
         setError(null)
+        //si nuevaCategoria es null, undefined o false
         if (!nuevaCategoria) {
             setError({ mensaje: 'La búsqueda está vacía', detalles: 'Escribe una categoría antes de buscar.' })
             return //para no ejecutar el resto del codigo
