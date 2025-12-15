@@ -2,7 +2,8 @@ const handleSubmit = (buscador) => (ev) => {
     ev.preventDefault();//prevenimos envio del formulario
     const datos = new FormData(ev.currentTarget);// crear un Nuevo From data con los datos cuando hay un evento
     //console.log('datos Formulario',datos)
-    const dato  = Object.fromEntries(datos.entries())//separamos todo en calve valor
+    //separamos todo en calve valor usando el entri y luego lo converticos ne objeto para sacar el valor de categoria
+    const dato  = Object.fromEntries(datos.entries())
     //console.log('categoria',dato);
     const categoria = dato.categoria
     //console.log(categoria);
