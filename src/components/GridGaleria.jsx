@@ -16,34 +16,34 @@ export const GridGaleria = ({ categoria, clearError }) => {
     // const size = 'large2x'
 
     //para cuando cateoria y paginacion cambian o cargan por primera vez
-    useEffect(() => {
-        const fetchDatos = async () => {
-            try {
-                // const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&size=${size}&locale=es-ES`
-                const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&locale=es-ES`
-                const resp = await connect(query)
-                //onsole.log(resp)
-                const photos = resp.photos
-                const total = resp.total_results
-                //console.log(totalFotos);
-                //console.log('fotos:', photos)
-                const fotos = photos.map((foto) => ({
-                    img: foto.src.large,
-                    url: foto.url,
-                    descripcion: foto.alt
-                }))
-                setDatos(fotos)
-                setTotalFotos(total)
-                //se ejucta siempre, cuando el padre pase la funcion.
-                if (clearError){
-                    clearError()
-                } 
-            } catch (error) {
-                console.error('error conectando:', error)
-                setDatos([])//actualizamos los datos si no hay
-                setTotalFotos(0)
-            }
+    const fetchDatos = async () => {
+        try {
+            // const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&size=${size}&locale=es-ES`
+            const query = `${urlBase}/search?query=${categoria}&page=${pagina}&per_page=${perPage}&locale=es-ES`
+            const resp = await connect(query)
+            //console.log(resp)
+            const photos = resp.photos
+            const total = resp.total_results
+            //console.log(totalFotos);
+            //console.log('fotos:', photos)
+            const fotos = photos.map((foto) => ({
+                img: foto.src.large,
+                url: foto.url,
+                descripcion: foto.alt
+            }))
+            setDatos(fotos)
+            setTotalFotos(total)
+            //se ejucta siempre, cuando el padre pase la funcion.
+            if (clearError){
+                clearError()
+            } 
+        } catch (error) {
+            console.error('error conectando:', error)
+            setDatos([])//actualizamos los datos si no hay
+            setTotalFotos(0)
         }
+    }
+    useEffect(() => {
         //Ejecuta el llmado al api si el valor de categoria no es indefinido o nulo
         if (categoria){
             fetchDatos()

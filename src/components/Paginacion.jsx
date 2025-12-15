@@ -8,7 +8,7 @@ export const Paginacion = ({ valorActual, pagina, accion, totalPaginas }) => {
     const calculo = Math.round(parseInt(totalPaginas)/12);
     console.log(calculo);
     if (accion === 'avanzar') {
-      if (valorActual <= calculo) {
+      if (valorActual < calculo) {
         pagina(valorActual + 1);
         console.log(valorActual);
       }else{
